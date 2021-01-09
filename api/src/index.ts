@@ -1,20 +1,13 @@
 const { ApolloServer, gql } = require("apollo-server");
+const categories = require("./categories");
 
-const typeDefs = gql`
-  type Query {
-    hello: String
-  }
+const typeDeff = gql`
+  type Query
 `;
 
-const resolvers = {
-  Query: {
-    hello: (root, args, context) => "Hello from Searchmetrics!"
-  }
-};
-
 const server = new ApolloServer({
-  typeDefs,
-  resolvers
+  typeDefs: [typeDeff, categories.typeDef],
+  resolvers: [categories.resolvers]
 });
 
 server.listen().then(({ url }) => {
