@@ -1,4 +1,4 @@
-import { addCategory, getAllCategories, getCategory, removeCategory, removeKeyword } from "./Category";
+import { addCategory, addKeyword, getAllCategories, getCategory, removeCategory, removeKeyword } from "./Category";
 
 export const resolvers = {
     Query: {
@@ -6,6 +6,7 @@ export const resolvers = {
         getCategory: (root, args) => getCategory(args.name),
         addCategory: (root, args) => addCategory(args.name, args.keywords),
         removeCategory: (root, args) => removeCategory(args.name),     
+        addKeyword: (root, args) => addKeyword(args.name, args.keyword),   
         removeKeyword: (root, args) => removeKeyword(args.name, args.keyword)   
     },
 };

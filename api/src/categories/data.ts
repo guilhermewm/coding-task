@@ -1,12 +1,149 @@
 export const data = {
     categories: [
         {
-            name: 'cars',
-            keywords: ['audi', 'bmw', 'tires']
+          name: "Car",
+          keywords: [
+            "Ferrari",
+            "BMW",
+            "Mercedes",
+            "Ferrari",
+            "BMW",
+            "Mercedes",
+            "Ferrari",
+            "BMW",
+            "Mercedes",
+            "Ferrari",
+            "BMW",
+            "Mercedes",
+            "Ferrari",
+            "BMW",
+            "Mercedes",
+            "Ferrari",
+            "BMW",
+            "Mercedes",
+            "Ferrari",
+            "BMW",
+            "Mercedes",
+            "Ferrari",
+            "BMW",
+            "Mercedes",
+            "Ferrari",
+            "BMW",
+            "Mercedes",
+            "Ferrari",
+            "BMW",
+            "Mercedes",
+            "Ferrari",
+            "BMW",
+            "Mercedes",
+            "Ferrari",
+            "BMW",
+            "Mercedes",
+            "Ferrari",
+            "BMW",
+            "Mercedes",
+            "Ferrari",
+            "BMW",
+            "Mercedes",
+            "Ferrari",
+            "BMW",
+            "Mercedes",
+            "Ferrari",
+            "BMW",
+            "Mercedes",
+            "Ferrari",
+            "BMW",
+            "Mercedes",
+            "Ferrari",
+            "BMW",
+            "Mercedes",
+            "Ferrari",
+          ],
         },
         {
-            name: 'bikes',
-            keywords: ['bianchi']
+          name: "Fruit",
+          keywords: ["Apple", "Orange", "Starberry"],
         },
-    ]
+        {
+          name: "Country",
+          keywords: ["Brazil", "Portugal", "Germany"],
+        },
+        {
+          name: "Country",
+          keywords: ["Brazil", "Portugal", "Germany"],
+        },
+        {
+          name: "Country",
+          keywords: ["Brazil", "Portugal", "Germany"],
+        },
+        {
+          name: "Country",
+          keywords: ["Brazil", "Portugal", "Germany"],
+        },
+        {
+          name: "Country",
+          keywords: ["Brazil", "Portugal", "Germany"],
+        },
+        {
+          name: "Country",
+          keywords: ["Brazil", "Portugal", "Germany"],
+        },
+        {
+          name: "Country",
+          keywords: ["Brazil", "Portugal", "Germany"],
+        },
+        {
+          name: "Country",
+          keywords: ["Brazil", "Portugal", "Germany"],
+        },
+        {
+          name: "Country",
+          keywords: ["Brazil", "Portugal", "Germany"],
+        },
+        {
+          name: "Country",
+          keywords: ["Brazil", "Portugal", "Germany"],
+        },
+        {
+          name: "Country",
+          keywords: ["Brazil", "Portugal", "Germany"],
+        },
+        {
+          name: "Country",
+          keywords: ["Brazil", "Portugal", "Germany"],
+        },
+        {
+          name: "Country",
+          keywords: ["Brazil", "Portugal", "Germany"],
+        },
+        {
+          name: "Country",
+          keywords: ["Brazil", "Portugal", "Germany"],
+        },
+        {
+          name: "Country",
+          keywords: ["Brazil", "Portugal", "Germany"],
+        },
+        {
+          name: "Country",
+          keywords: ["Brazil", "Portugal", "Germany"],
+        },
+        {
+          name: "Country",
+          keywords: ["Brazil", "Portugal", "Germany"],
+        },
+        {
+          name: "Country",
+          keywords: ["Brazil", "Portugal", "Germany"],
+        },
+        {
+          name: "Country",
+          keywords: ["Brazil", "Portugal", "Germany"],
+        },
+        {
+          name: "Countryyyy",
+          keywords: ["Brazil", "Portugal", "Germany"],
+        },
+      ]
 };
+

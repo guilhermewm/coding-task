@@ -1,7 +1,5 @@
 import { data } from "./data";
-const {
-    UserInputError,
-  } = require('apollo-server');
+import { UserInputError } from 'apollo-server';
 
 export type CategoryType = {
     name: string,
@@ -16,6 +14,7 @@ const getKeyword = (name: string, keyword: string) => {
 export const getAllCategories = () => data.categories;
 
 export const getCategory = (name: string) => {
+    if (!name) throw new UserInputError('You need to inform a category name');
     return data.categories.find((cat: CategoryType) => cat.name === name)
 };
 
@@ -30,6 +29,20 @@ export const removeCategory = (name: string) => {
     if (!name) throw new UserInputError("You need to inform a category name");
     if (!getCategory(name)) throw new UserInputError("This category doesn't exists");
     data.categories = data.categories.filter((category: CategoryType) => category.name !== name);
+    return true;
+};
+
+export const addKeyword = (name: string, keyword: string) => {
+    if (!name) throw new UserInputError("You need to inform a category name");
+    if (!keyword) throw new UserInputError("You need to inform a category name");
+    if (!getCategory(name)) throw new UserInputError("This category doesn't exists");
+    if (getKeyword(name, keyword)) throw new UserInputError("This keyword already exists");
+
+    data.categories.map((cat: CategoryType) => {
+        if (cat.name === name) {
+            cat.keywords.push(keyword);
+        }
+    });
     return true;
 };
 

@@ -15,6 +15,7 @@ export const typeDef = gql`
         getCategory(name: String): Category,
         addCategory(name: String, keywords: [String]): Boolean,
         removeCategory(name: String): Boolean,
+        addKeyword(name: String, keyword: String): Boolean,
         removeKeyword(name: String, keyword: String): Boolean
     }
 `;
