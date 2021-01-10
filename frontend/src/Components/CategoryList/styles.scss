@@ -1,0 +1,31 @@
+@import '../Styles/colors.scss';
+
+.category-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: calc(100vh - 7vh - 20px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: auto;
+
+  display: flex;
+  flex-direction: column;
+
+  li {
+    border-top: solid 1px #888888;
+    background-color: $base-color;
+  }
+
+  li:last-child {
+    border-bottom: solid 1px #888888;
+  }
+
+  li:nth-child(2n + 1) {
+    background-color: $light-secondary-color;
+  }
+
+  li:hover {
+    background-color: $dark-primary-color;
+    color: $base-color;
+  }
+}

@@ -1,0 +1,52 @@
+@import '../Styles/colors.scss';
+
+.category-detail {   
+  justify-content: center;
+
+  > .keywords {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;  
+    height: calc(100vh - 20vh - 40px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: auto;
+  }
+  
+    > footer {
+      justify-content: center;
+      align-items: center;
+      background: #f5f5f5;
+      position: fixed;
+      height: 13vh;
+      bottom: 0;
+      width: 70%;
+      display: flex;
+  
+      > div {
+        text-align: center;
+      
+        > form {
+          > input {
+            border: 1px solid;
+            border-radius: 5px 0px 0px 5px;
+            height: 35px;
+            width: 250px;
+          }
+      
+          > button {      
+            border: 1px solid $dark-primary-color;
+            border-radius: 0px 5px 5px 0px;
+            height: 39px;
+            background: $primary-color;
+            color: $base-color;
+          }
+        }
+
+        > span {
+          color: rgb(177, 50, 50);
+        }
+    }
+  }
+  
+}

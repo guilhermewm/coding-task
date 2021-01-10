@@ -1,0 +1,15 @@
+.category {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+  
+    cursor: pointer;
+  
+    > small {
+      padding-top: 0.2rem;
+      padding-left: 0.5rem;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
