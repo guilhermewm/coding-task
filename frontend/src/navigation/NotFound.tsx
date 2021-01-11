@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import './styles.scss';
+
 const NotFound = () => (
-  <div>
+  <div className="not-found">
     <h1>404 - Not Found!</h1>
-    <Link to="/">
+    <Link className="link" to="/">
       Go Home
     </Link>
   </div>

@@ -1,12 +1,9 @@
 
 .empty-detail {   
-  > div {
+  padding: 20px;
+  margin: 50px 0px 0px 0px;
+  > div {  
+    justify-content: center;
     display: flex;
-    padding: 20px;
-    margin: 50px 0px 0px 0px;
-  
-    > p {
-      margin: 0 auto;
-    }
   }
 }

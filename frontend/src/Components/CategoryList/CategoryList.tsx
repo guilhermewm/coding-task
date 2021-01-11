@@ -2,9 +2,9 @@ import React, { FC } from "react";
 import Category from "../Category/Category";
 import Header from "../Header/Header";
 import { CategoryListProps } from "./types";
+import { Link } from "react-router-dom";
 
 import './styles.scss';
-import { Link } from "react-router-dom";
 
 const CategoryList: FC<CategoryListProps> = ({ categories, changeCategory }) => {
   return (
@@ -12,7 +12,7 @@ const CategoryList: FC<CategoryListProps> = ({ categories, changeCategory }) => 
       <Header>
         <h1>Categories</h1>
         <Link to={{search: ''}}> 
-          <svg onClick={() => changeCategory({})}
+          <svg className="add" onClick={() => changeCategory({})}
             xmlns="http://www.w3.org/2000/svg"
             width="50"
             height="50"
@@ -23,7 +23,7 @@ const CategoryList: FC<CategoryListProps> = ({ categories, changeCategory }) => 
           </svg>   
         </Link>
       </Header>
-       {categories.length && (
+       {!!categories.length && (
          <ul className="category-list">
           {categories?.map((category, index) => (
             <li key={index} onClick={() => changeCategory(category)}>

@@ -1,4 +1,5 @@
 export type KeywordProps = {
-    children: string
+    children: string,
+    removeKeyword: Function
 }
   

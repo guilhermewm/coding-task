@@ -2,11 +2,11 @@ import React, { FC } from "react";
 import { KeywordProps } from "./types";
 import './styles.scss';
 
-const keyword: FC<KeywordProps> = ({ children }) => {
+const keyword: FC<KeywordProps> = ({ children, removeKeyword }) => {
   return (
     <div className="keyword">
       <span>{children}</span>
-      <div> <button> X </button> </div>
+      <div> <button onClick={() => removeKeyword(children)}> X </button> </div>
     </div>
   );
 };
