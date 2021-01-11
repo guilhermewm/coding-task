@@ -8,14 +8,14 @@ export type CategoryType = {
 
 const getKeyword = (name: string, keyword: string) => {
     const category = getCategory(name);
-    return category.keywords.find((word: string) => word === keyword);
+    return category.keywords.find((word: string) => word.toUpperCase() === keyword.toUpperCase());
 }
 
 export const getAllCategories = () => data.categories;
 
 export const getCategory = (name: string) => {
     if (!name) throw new UserInputError('You need to inform a category name');
-    return data.categories.find((cat: CategoryType) => cat.name === name)
+    return data.categories.find((cat: CategoryType) => cat.name.toUpperCase() === name.toUpperCase())
 };
 
 export const addCategory = (name: string, keywords: string[]) => {
