@@ -1,5 +1,6 @@
 import { data } from "./data";
 import { UserInputError } from 'apollo-server';
+import { findKeywords } from "../http/datamuse";
 
 export type CategoryType = {
     name: string,
@@ -18,10 +19,16 @@ export const getCategory = (name: string) => {
     return data.categories.find((cat: CategoryType) => cat.name.toUpperCase() === name.toUpperCase())
 };
 
-export const addCategory = (name: string, keywords: string[]) => {
+export const addCategory = async (name: string) => {
     if (!name) throw new UserInputError('You need to inform a category name');
     if (getCategory(name)) throw new UserInputError("This category already exists");
-    data.categories.push({name, keywords});
+    try {
+        const resp = await findKeywords(name);
+        const keywords: string[] = resp.data.slice(0, 10).map((keyword: any) => keyword.word);
+        data.categories.push({name, keywords});
+    } catch (err) {
+        throw new UserInputError(err.toString());
+    }
     return true;
 };
 
@@ -62,3 +69,6 @@ export const removeKeyword = (name: string, keyword: string) => {
     return true;
 };
 
+export const cleanDatabase = () => {
+    data.categories = [];
+}
