@@ -6,7 +6,8 @@
   padding: 0;
   height: calc(100vh - 7vh - 20px);
   overflow-y: auto;
-  -webkit-overflow-scrolling: auto;
+  -webkit-overflow-scrolling: auto;  
+  min-width: 275px;
 
   display: flex;
   flex-direction: column;

@@ -10,8 +10,11 @@
 .sidebar {
   width: 30%;
   border-right: 1px solid $secondary-color;
+  min-width: 275px;
 }
 
 .category-detail {
   width: 100%;
 }
+
+

@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useCallback, useEffect, useState } from "react";
 import { CategoryDetailProps } from "./types";
 import Header from "../Header/Header";
 import Keyword from "../Keyword/Keyword";
@@ -13,10 +13,11 @@ const CategoryDetail: FC<CategoryDetailProps> = ({ categoryName }) => {
   const [error, setError] = useState<string>('');
   const [success, setSuccess] = useState<string>('');  
 	const [isLoading, setIsLoading] = useState<boolean>(false);
+	const [formLoading, setFormLoading] = useState<boolean>(false);
 
   const history = useHistory();
 
-  const fetchData = async () => {
+  const fetchData = useCallback( async() => {
 		try {
       setIsLoading(true);
 			const resp = await getCategory(categoryName);
@@ -27,18 +28,33 @@ const CategoryDetail: FC<CategoryDetailProps> = ({ categoryName }) => {
 		} finally {
       setIsLoading(false);
     }
-	}
-
+  }, [categoryName]);
+  
 	useEffect(() => {
     fetchData();
-	}, [categoryName]);
+	}, [fetchData, categoryName]);
 
   const addNewKeyword = async (word: string) => {
     try {
-      setIsLoading(true);
+      setFormLoading(true);
       await addKeyword(category.name, word);
       setSuccess('Success!');  
       setError('');
+      fetchData();  
+    } catch(err) {
+      setError(err.toString());
+      setSuccess('');
+    } finally {
+      setFormLoading(false);
+    }
+  }
+
+  const deleteKeyword = async (word: string) => {
+    try {
+      setIsLoading(true);
+      await removeKeyword(category.name, word);
+      setSuccess('Success!');  
+      setError(''); 
       fetchData();  
     } catch(err) {
       setError(err.toString());
@@ -48,26 +64,17 @@ const CategoryDetail: FC<CategoryDetailProps> = ({ categoryName }) => {
     }
   }
 
-  const deleteKeyword = async (word: string) => {
-    try {
-      await removeKeyword(category.name, word);
-      setSuccess('Success!');  
-      setError(''); 
-      fetchData();  
-    } catch(err) {
-      setError(err.toString());
-      setSuccess('');
-    } 
-  }
-
   const deleteCategory = async () => {
     try {
+      setIsLoading(true);
       await removeCategory(category.name);
       history.replace('/');
       window.location.reload(false);
       setError('');
     } catch (err) {
       setError(err.toString());
+    } finally {
+      setIsLoading(false);
     }
   }
   
@@ -103,7 +110,7 @@ const CategoryDetail: FC<CategoryDetailProps> = ({ categoryName }) => {
             </div>          
             <footer>
               <div>
-                <Form type={'keyword'} submit={addNewKeyword} error={error} success={success} /> 
+                <Form type={'keyword'} submit={addNewKeyword} error={error} success={success} loading={formLoading} /> 
               </div>              
             </footer>
           </>

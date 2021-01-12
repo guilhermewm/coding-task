@@ -2,7 +2,7 @@ import React, { FC, useState } from "react";
 import { FormProps } from "./types";
 import './styles.scss';
 
-const Form: FC<FormProps> = ({type, submit, error, success}) => {
+const Form: FC<FormProps> = ({type, submit, error, success, loading}) => {
   const [value, setValue] = useState<string>('');
 
   return (    
@@ -17,6 +17,7 @@ const Form: FC<FormProps> = ({type, submit, error, success}) => {
       </form>
       {error && (<span className="error">{error}</span>)}
       {success && (<span className="success">{success}</span>)}
+      {loading && (<span>Loading...</span>)}
     </div> 
   );
 };

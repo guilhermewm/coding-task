@@ -4,7 +4,6 @@ import CategoryDetail from '../../Components/CategoryDetail/CategoryDetail';
 import CategoryList from '../../Components/CategoryList/CategoryList';
 import CreateCategory from '../../Components/CreateCategory/CreateCategory';
 import { addCategory, getAllCategories } from '../../graphql/service';
-import { findKeywords } from '../../service/category';
 
 import './styles.scss';
 
@@ -17,6 +16,8 @@ const Home: React.FC = () => {
 
 	const [categoryError, setCategoryError] = useState<string>('');
 	const [success, setSuccess] = useState<string>('');  
+
+	const [formLoading, setFormLoading] = useState<boolean>(false);
 
 	const fetchData = async () => {
 		try {
@@ -33,23 +34,24 @@ const Home: React.FC = () => {
 
 	const createCategory = async (name: string) => {
 		try {
-			const resp = await findKeywords(name);
-			const keywords: string[] = resp.data.slice(0, 10).map((keyword: any) => keyword.word);
-			await addCategory(name, keywords);
+			setFormLoading(true);
+			await addCategory(name);
 			setCategoryError('');
 			setSuccess('Success!');
 			fetchData();
 		} catch (err) {
 			setSuccess('');
 			setCategoryError(err.toString());
-		} 
+		} finally {			
+			setFormLoading(false);
+		}
 	}
 
 	useEffect(() => {
 		fetchData();
 	}, []);
 
-	const changeCategory = async (category: Category) => {
+	const onChangeCategory = async (category: Category) => {
 		setCategoryName(category.name);
 	};
 
@@ -61,14 +63,14 @@ const Home: React.FC = () => {
 			<div className="main">
 				<section className="sidebar">
 					<nav>
-						<CategoryList categories={categories} changeCategory={changeCategory} />
+						<CategoryList categories={categories} onChangeCategory={onChangeCategory} />
 					</nav>
 				</section>
 				<section className="category-detail">
 					{categories.find(cat => cat?.name?.toUpperCase() === categoryName?.toUpperCase()) && categories.length ? (
 						<CategoryDetail categoryName={categoryName}></CategoryDetail>
 					) : (
-						<CreateCategory createCategory={createCategory} error={categoryError} success={success} />
+						<CreateCategory createCategory={createCategory} error={categoryError} success={success} loading={formLoading} />
 					)}
 				</section>
 			</div>				

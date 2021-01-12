@@ -25,14 +25,14 @@ export const getCategory = (name: string) => {
         })   
 }
 
-export const addCategory = (name: string, keywords: string[]) => {
+export const addCategory = (name: string) => {
     return GraphQLClient.query({
             query: gql`
-                query AddCategory($name: String, $keywords: [String]) {
-                    addCategory(name: $name, keywords: $keywords)
+                query AddCategory($name: String) {
+                    addCategory(name: $name)
                 }
             `,
-            variables: {name, keywords},
+            variables: {name},
             fetchPolicy: "network-only"
         })   
 }

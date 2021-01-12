@@ -6,13 +6,13 @@ import { Link } from "react-router-dom";
 
 import './styles.scss';
 
-const CategoryList: FC<CategoryListProps> = ({ categories, changeCategory }) => {
+const CategoryList: FC<CategoryListProps> = ({ categories, onChangeCategory }) => {
   return (
     <>
       <Header>
         <h1>Categories</h1>
         <Link to={{search: ''}}> 
-          <svg className="add" onClick={() => changeCategory({})}
+          <svg className="add" onClick={() => onChangeCategory({})}
             xmlns="http://www.w3.org/2000/svg"
             width="50"
             height="50"
@@ -26,7 +26,7 @@ const CategoryList: FC<CategoryListProps> = ({ categories, changeCategory }) => 
        {!!categories.length && (
          <ul className="category-list">
           {categories?.map((category, index) => (
-            <li key={index} onClick={() => changeCategory(category)}>
+            <li key={index} onClick={() => onChangeCategory(category)}>
               <Category category={category} />
             </li>
           ))}
