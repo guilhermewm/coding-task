@@ -1,5 +1,7 @@
 # Welcome to the app documentation
 
+Hello! Welcome to my test, this was the first time using GraphQL into a project, so... Sorry if I did some mistakes.
+
 The structure of the project:
 ```
 |
